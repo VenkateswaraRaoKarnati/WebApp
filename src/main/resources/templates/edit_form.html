@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Employee</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f4f4f4;
+    }
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: inline-block;
+      width: 120px;
+      font-weight: bold;
+      color: #555;
+    }
+    input[type="text"], input[type="number"] {
+      width: 300px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="number"] {
+      width: 150px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-left: 125px;
+      display: block;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<h2>Update Employee Details</h2>
+<div class="form-container">
+  <form th:object="${emp}" method="post">
+    <div class="form-group">
+      <label for="name">Employee ID:</label>
+
+      <input type="text" th:field="*{empNo}" readonly/>
+    </div>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" th:field="*{eName}" id="name" required/>
+<!--      <span th:if="${#fields.hasErrors('eName')}" th:errors="*{eName}" class="error"></span>-->
+    </div>
+    <div class="form-group">
+      <label for="job">Designation:</label>
+      <input type="text" th:field="*{job}" id="job" required/>
+<!--      <span th:if="${#fields.hasErrors('job')}" th:errors="*{job}" class="error"></span>-->
+    </div>
+    <div class="form-group">
+      <label for="sal">Salary:</label>
+      <input type="number" th:field="*{sal}" id="sal" step="0.01" required/>
+<!--      <span th:if="${#fields.hasErrors('sal')}" th:errors="*{sal}" class="error"></span>-->
+    </div>
+    <div class="form-group">
+      <label for="deptNo">Department Number:</label>
+      <input type="number" th:field="*{deptNo}" id="deptNo" required/>
+<!--      <span th:if="${#fields.hasErrors('deptNo')}" th:errors="*{deptNo}" class="error"></span>-->
+    </div>
+    <input type="submit" value="Save"/>
+  </form>
+</div>
+</body>
+</html>
