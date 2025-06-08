@@ -2,6 +2,8 @@ package com.SpringMVC.WebEmployeeCrud.service;
 
 import com.SpringMVC.WebEmployeeCrud.model.Employee;
 
+import java.util.Optional;
+
 public interface IEmployeeService {
     public Iterable<Employee> getAllEmployees();
 
@@ -9,7 +11,7 @@ public interface IEmployeeService {
 
 //    Employee editEmployee(Employee emp);
 
-    Employee findByEmpNo(int empNo);
+    Optional<Employee> findByEmpNo(int empNo);
 
     void deleteByEmpNO(int empNo);
 

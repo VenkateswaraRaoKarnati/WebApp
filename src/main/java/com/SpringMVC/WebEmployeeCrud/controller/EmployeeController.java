@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
@@ -52,10 +53,13 @@ public class EmployeeController {
     @GetMapping("/edit")
     public String editEmployee(@ModelAttribute("emp") Employee emp, @RequestParam("empNo") int empNo)
     {
-        Employee emp1=service.findByEmpNo(empNo);
-        System.out.println(emp1.getEmpNo());
-        BeanUtils.copyProperties(emp1,emp);
-            return "edit_form";
+        Optional<Employee> emp1=service.findByEmpNo(empNo);
+//        String result = emp1.map(employee-> employee.toString()).orElse("Doesn't Exist");
+//        System.out.println(result);
+        String page=emp1.isPresent()?"edit_form":"not_found";
+
+//        BeanUtils.copyProperties(emp1,emp);
+            return page;
 
 
 

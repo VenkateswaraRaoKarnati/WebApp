@@ -7,8 +7,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 public interface IEmployeeRepository extends PagingAndSortingRepository<Employee,Integer>, CrudRepository<Employee,Integer> {
 
 
-    Employee findByEmpNo(int empNo);
+    Optional<Employee> findByEmpNo(int empNo);
 }

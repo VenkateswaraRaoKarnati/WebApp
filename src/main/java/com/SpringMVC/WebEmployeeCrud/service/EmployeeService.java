@@ -2,12 +2,13 @@ package com.SpringMVC.WebEmployeeCrud.service;
 
 import com.SpringMVC.WebEmployeeCrud.model.Employee;
 import com.SpringMVC.WebEmployeeCrud.repository.IEmployeeRepository;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class EmployeeService implements IEmployeeService {
@@ -45,7 +46,7 @@ public class EmployeeService implements IEmployeeService {
 
 
     @Override
-    public Employee findByEmpNo(int empNo) {
+    public Optional<Employee> findByEmpNo(int empNo) {
         return repo.findByEmpNo(empNo);
 
     }
